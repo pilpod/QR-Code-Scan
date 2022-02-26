@@ -38,22 +38,23 @@ function checkSupportedFormat() {
 }
 
 function detectCode() {
-    const barcodeDetector = new BarcodeDetector({
-        formats: ["qr_code", "code_39", "codabar", "ean_13"],
-    });
+    const barcodeDetector = createDetector();
 
     setInterval(() => {
         barcodeDetector.detect(video).then(codes => {
             // If no codes exit function
             if (codes.length === 0) return;
 
-            for (const barcode of codes) {
+            codes.forEach(barcode => console.log(barcode.rawValue))
+
+            /* for (const barcode of codes) {
                 // Log the barcode to the console
                 console.log(barcode);
-            }
+            } */
+
         }).catch(err => {
             // Log an error if one happens
-            console.error(err);
+            console.error("Invalid QR: " +  err);
         })
     }, 500)
 }
