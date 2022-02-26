@@ -1,5 +1,5 @@
 
-const video = document.getElementById('video');
+export const video = document.getElementById('video');
 
 function checkMediaDevice() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
